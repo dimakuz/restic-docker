@@ -9,7 +9,6 @@ run_restic () {
     then
         restic \
             --cache-dir /cache/${NAME} \
-            --password-file /secret/RESTIC_PASSWORD \
             --repo rclone:${BUCKET} \
             --verbose=2 \
             init
@@ -17,7 +16,6 @@ run_restic () {
     fi
     restic \
         --cache-dir /cache/${NAME} \
-        --password-file /secret/RESTIC_PASSWORD \
         --repo rclone:${BUCKET} \
         --verbose=2 \
         backup ${TARGET} \
