@@ -14,11 +14,12 @@ run_restic () {
             init
         telegram -t ${TELEGRAM_TOKEN} -c ${TELEGRAM_CLIENT} "${NAME}: remote repo initialized"
     fi
+    cd ${TARGET}
     restic \
         --cache-dir /cache/${NAME} \
         --repo rclone:${BUCKET} \
         --verbose=2 \
-        backup ${TARGET} \
+        backup . \
         | tee /tmp/execution.txt
 
     if [ 0 -eq ${PIPESTATUS[0]} ]
