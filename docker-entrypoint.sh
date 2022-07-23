@@ -28,7 +28,7 @@ run_restic () {
     else
         export STATUS="failure"
     fi
-    telegram -t "${TELEGRAM_TOKEN}" -c "${TELEGRAM_CLIENT}" -f /tmp/execution.txt "${NAME}: backup ${STATUS}"
+    telegram -t "${TELEGRAM_TOKEN}" -c "${TELEGRAM_CLIENT}" "${NAME}: backup ${STATUS}"
 }
 
 run_restic $@
